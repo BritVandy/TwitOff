@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import json
-from .data_model import DB
+from .data_model import DB, User
 from .twitter import upsert_user
 from os import path
 from .ml import predict_most_likely_author
@@ -30,6 +30,6 @@ def create_app():
     @app.route('/predict_author', methods=['GET'])
     def predict_author():
         tweet_to_classify = request.args['tweet_to_classify']
-        return predict_most_likely_author(tweet_to_classify, ['cher', 'elonmusk', 'barackobama'])
+        return predict_most_likely_author(tweet_to_classify, [User])
 
     return app

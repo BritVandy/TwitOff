@@ -8,7 +8,7 @@ $('#tweet_submit').click(function () {
     $.ajax({
         url: '/predict_author?tweet_to_classify=' + $('#tweet_text_input').val(),
         type: 'GET',
-        success: function () {
+        success: function (response) {
             $('#classify_response').html(response)
         }
     });
